@@ -1,0 +1,7 @@
+env*
+
+*__pychache__*
+
+frontend/package-lock.json*
+backend/.DS_Store
+backend/__pycache__/app.cpython-38.pyc
