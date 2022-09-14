@@ -73,7 +73,9 @@ export default class Home extends React.Component<{}, HomeState>{
   onInputSearchChange(event: React.SyntheticEvent<Element, Event>, value: string, reason: AutocompleteInputChangeReason) {
     if (value) {
       // value is from options
-      if (this.state.options.filter(d => d.name == value).length != 0) {
+      const selectedList =  this.state.options.filter(d => d.name == value)
+      if (selectedList.length != 0) {
+        this.setOptions(selectedList);
         return;
       }
       this.requestService.getData(value, this.setOptions, this.setErrorMessageSearch);
@@ -127,7 +129,7 @@ export default class Home extends React.Component<{}, HomeState>{
           getOptionLabel={(option: DrugDetail) => option.name}
           options={this.state.options}
           isOptionEqualToValue={(option: DrugDetail, value: DrugDetail) => option.name === value.name}
-          renderInput={(params) => <TextField {...params} label="Start to search..." />}
+          renderInput={(params) => <TextField {...params} label="Search" />}
           value={value}
         />
         <Button
